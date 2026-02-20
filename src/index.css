@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Jeplus Healthcare Operations OS - Command Center Design System */
+
+@layer base {
+  :root {
+    /* Clean Light Professional Theme */
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Professional Blue Primary */
+    --primary: 217 91% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Light Gray Secondary */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted Surfaces */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Teal Accent */
+    --accent: 172 66% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Red Destructive / Alert */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Amber Warning */
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+
+    /* Emerald Success */
+    --success: 142 71% 40%;
+    --success-foreground: 0 0% 100%;
+
+    /* Purple Info */
+    --info: 262 83% 58%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 50%;
+
+    --radius: 0.5rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 50%) 0%, hsl(217, 91%, 60%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220, 14%, 96%) 0%, hsl(0, 0%, 100%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(220, 14%, 98%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsla(217, 91%, 50%, 0.08) 0%, transparent 70%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 30px -5px hsla(217, 91%, 50%, 0.2);
+    --shadow-card: 0 1px 3px 0 hsla(0, 0%, 0%, 0.1), 0 1px 2px -1px hsla(0, 0%, 0%, 0.1);
+    --shadow-elevated: 0 4px 6px -1px hsla(0, 0%, 0%, 0.1), 0 2px 4px -2px hsla(0, 0%, 0%, 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 20%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 18%;
+    --sidebar-ring: 217 91% 50%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 222 47% 6%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 172 66% 45%;
+    --accent-foreground: 222 47% 6%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 6%;
+    --success: 142 71% 45%;
+    --success-foreground: 222 47% 6%;
+    --info: 262 83% 58%;
+    --info-foreground: 210 40% 98%;
+    --border: 217 33% 18%;
+    --input: 217 33% 15%;
+    --ring: 199 89% 48%;
+    --sidebar-background: 222 47% 7%;
+    --sidebar-foreground: 210 40% 80%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 217 33% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 15%;
+    --sidebar-ring: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer components {
+  /* KPI Card Styles */
+  .kpi-card {
+    @apply relative overflow-hidden rounded-lg border border-border bg-card p-4;
+    box-shadow: var(--shadow-card);
+  }
+
+  .kpi-card:hover {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Status Indicators */
+  .status-indicator {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .status-critical {
+    @apply bg-destructive/20 text-destructive;
+  }
+
+  .status-warning {
+    @apply bg-warning/20 text-warning;
+  }
+
+  .status-success {
+    @apply bg-success/20 text-success;
+  }
+
+  .status-info {
+    @apply bg-info/20 text-info;
+  }
+
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsla(199, 89%, 48%, 0.5);
+  }
+
+  /* Data Grid */
+  .data-grid {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  /* Monospace for numbers */
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Animated pulse for alerts */
+  .pulse-alert {
+    animation: pulse-alert 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-alert {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Slide in animation */
+  .slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Department badges */
+  .dept-sales { @apply bg-primary/20 text-primary border-primary/30; }
+  .dept-accounts { @apply bg-warning/20 text-warning border-warning/30; }
+  .dept-dispatch { @apply bg-success/20 text-success border-success/30; }
+  .dept-claims { @apply bg-destructive/20 text-destructive border-destructive/30; }
+  .dept-purchase { @apply bg-info/20 text-info border-info/30; }
+  .dept-management { @apply bg-accent/20 text-accent border-accent/30; }
+  .dept-admin { @apply bg-muted-foreground/20 text-muted-foreground border-muted-foreground/30; }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
