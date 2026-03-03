@@ -20,12 +20,12 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
-      "/__sales_api": {
-        target: "http://192.168.1.110:3600",
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/__sales_api/, ""),
-      },
+      // "/__sales_api": {
+      //   target: "http://192.168.1.110:3600",
+      //   changeOrigin: true,
+      //   secure: false,
+      //   rewrite: (path) => path.replace(/^\/__sales_api/, ""),
+      // },
     },
   },
   resolve: {

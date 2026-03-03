@@ -24,33 +24,17 @@ export const fetchTodayCustomersApi = async () => {
   }
 };
 
-// customer wise ai response 
 
-
-export const streamSalesScript = async (id) => {
-  const response = await fetch("http://localhost:8000/sales/script/stream", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      customer_id: id,
-    }),
-  });
-
-  const reader = response.body.getReader();
-  const decoder = new TextDecoder("utf-8");
-
-  let finalText = "";
-
-  while (true) {
-    const { value, done } = await reader.read();
-    if (done) break;
-
-    const chunk = decoder.decode(value);
-    finalText += chunk;
-
-    // 👇 yahin ChatGPT jaisa live update
-    setOutput(prev => prev + chunk);
+// order modal api 
+export const fetchItemsApi = async (searchQuery) => {
+  console.log("fetchItemsApi called with searchQuery:", searchQuery);
+  try{
+const response = await axios.get(`https://jemapps.in/api/product/search/${encodeURIComponent(searchQuery)}`) 
+console.log("fetchItemsApi response:", response.data);
+return response;
+  }catch(error){
+    console.error("Error fetching items:", error);
+    throw error;
   }
-};
+}
+

@@ -229,7 +229,7 @@ const SalesHome = () => {
       <SalesOrderModal
         isOpen={showOrderModal}
         onClose={() => setShowOrderModal(false)}
-        customerName={selectedCustomer?.name || ""}
+        customerName={selectedCustomer}
         onSaveDraft={(items) => {
           toast.success("Order saved as draft");
           setShowOrderModal(false);
